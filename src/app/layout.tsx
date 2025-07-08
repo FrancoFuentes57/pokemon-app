@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import { ThemeProvider } from "next-themes";
+import { Providers } from "./providers";
 import { AppLayout } from "@/layout/AppLayout";
 import "./globals.css";
 
@@ -23,9 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${roboto.variable} antialiased`}>
-        <ThemeProvider attribute={"class"} enableSystem defaultTheme="system">
+        <Providers>
           <AppLayout>{children}</AppLayout>
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );

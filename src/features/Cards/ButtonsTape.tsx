@@ -1,9 +1,12 @@
-import React from "react";
+"use client";
+import React, { useMemo } from "react";
 /* Next JS Features */
 import Link from "next/link";
 /* react-icons */
-import { FaRegHeart } from "react-icons/fa";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { IoArrowForward } from "react-icons/io5";
+/* Hooks */
+import { useFavorites } from "@/hooks/useFavorites";
 /* Components */
 import { Button } from "@/components/ui/Button";
 /* Types */
@@ -14,6 +17,18 @@ interface ButtonsTapeProps {
 }
 
 const ButtonsTape: React.FC<ButtonsTapeProps> = ({ item }) => {
+  const { favorites, addFavoritePokemon, removeFavoritePokemon } =
+    useFavorites();
+  const inFavorites = useMemo(
+    () => favorites.some((fav) => fav.id === item.id),
+    [favorites, item.id]
+  );
+
+  const handleFavorite = () => {
+    if (inFavorites) removeFavoritePokemon(item.id);
+    else addFavoritePokemon(item);
+  };
+
   return (
     <>
       <Link href={`/pokemon/${item.id}`}>
@@ -27,11 +42,16 @@ const ButtonsTape: React.FC<ButtonsTapeProps> = ({ item }) => {
       </Link>
 
       <Button
+        onClick={handleFavorite}
         variant="outline"
         size="icon"
         className="z-10 absolute rounded-full left-[-14px] top-[-5px] dark:bg-[#1f2937] dark:hover:bg-[#1f2937]"
       >
-        <FaRegHeart className="absolute size-5" />
+        {inFavorites ? (
+          <FaHeart className="absolute size-5 text-pink-600" />
+        ) : (
+          <FaRegHeart className="absolute size-5" />
+        )}
       </Button>
     </>
   );
