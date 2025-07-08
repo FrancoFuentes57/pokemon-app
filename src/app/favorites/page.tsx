@@ -19,7 +19,9 @@ const Favorites = () => {
         <Lottie play loop animationData={Pokeball} />
       </div>
       <h2 className="text-4xl sm:text-6xl text-center my-16 font-semibold">
-        Your Pokemons trapped!
+        {favorites.length > 0
+          ? "Your Pokemon trapped!"
+          : "No Pokemon trapped yet!"}
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
         {favorites.map((pokemon: Item) => (

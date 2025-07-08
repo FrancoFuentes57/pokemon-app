@@ -3,7 +3,7 @@ import { HomeSection } from "@/components/ui/Sections/HomeSection";
 import { PokemonCarousel } from "@/features/Carousel/PokemonCarousel";
 
 export default async function Home() {
-  const res = await fetch("http://localhost:3000/api/home-data", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/home-data`, {
     cache: "force-cache",
   });
 
