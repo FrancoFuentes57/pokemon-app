@@ -1,4 +1,3 @@
-// src/app/pokemon/[id]/page.tsx
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Image from "next/image";
 import Link from "next/link";
@@ -6,16 +5,14 @@ import pokeApi from "@/lib/axios";
 import { Button } from "@/components/ui/Button";
 import { getCapitalizeName } from "@/lib/utils";
 
-interface PokemonDetailPageProps {
-  params: { id: string };
-}
-
 export const dynamic = "force-dynamic";
 
 export default async function PokemonDetailPage({
   params,
-}: PokemonDetailPageProps) {
-  const id = params.id;
+}: {
+  params: { id: string };
+}) {
+  const { id } = await params;
 
   try {
     const res = await pokeApi.get(`pokemon/${id}`);
