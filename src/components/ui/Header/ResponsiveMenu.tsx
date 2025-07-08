@@ -52,7 +52,7 @@ const ResponsiveMenu: React.FC<ResponsiveMenuProps> = ({ isUpperMobile }) => {
         </div>
         <DrawerHeader className="items-center">
           <Image
-            src="/PokeBallMenu.png"
+            src="/PokeballMenu.png"
             alt="Pokemon Pokeballs"
             width={60}
             height={60}
