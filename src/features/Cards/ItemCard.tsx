@@ -12,29 +12,27 @@ interface ItemCardProps {
   type: string;
 }
 
-const ItemCard: React.FC<ItemCardProps> = ({ item, type }) => {
+export const ItemCard: React.FC<ItemCardProps> = ({ item, type }) => {
   const color = item.types
     ? typeColors[item.types[0] as PokemonType] ?? "#fdba74"
     : "#fdba74";
 
-  console.log(color);
-
-  return (
-    <div
-      className={`w-full max-w-[300px] flex flex-col shadow-md px-6 py-4 rounded-[10px] bg-[radial-gradient(circle_at_50%_0%,_${color}_36%,_#ffffff_36%)] dark:bg-[radial-gradient(circle_at_50%_0%,_#fdba74_36%,_#1f2937_36%)]`}
-    >
+  const CardContent = () => (
+    <>
       <ItemImage
-        customSx="w-[230px] h-[230px] mx-auto"
+        customSx="w-[210px] h-[210px] sm:w-[230px] sm:h-[230px] mx-auto"
         src={type === "Pokemon" ? item.image : "/VideoGame.png"}
       />
       <p className="text-center text-2xl font-semibold mb-3">
         {getCapitalizeName(item.name)}
       </p>
+
       {item.generation && (
         <p className="text-center font-light mb-3">
           {getCapitalizeName(item.generation)}
         </p>
       )}
+
       {item?.types && (
         <div className="flex items-center justify-around mb-3">
           {item.types.map((type: string, index) => {
@@ -67,8 +65,30 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, type }) => {
           </div>
         </div>
       )}
-    </div>
+    </>
+  );
+
+  return (
+    <>
+      {/* Light mode */}
+      <div
+        className="dark:hidden w-full max-w-[300px] flex flex-col shadow-md px-6 py-4 rounded-[10px]"
+        style={{
+          backgroundImage: `radial-gradient(circle at 50% 0%, ${color} 36%, #ffffff 36%)`,
+        }}
+      >
+        <CardContent />
+      </div>
+
+      {/* Dark mode */}
+      <div
+        className="hidden dark:flex w-full max-w-[300px] flex-col shadow-md px-6 py-4 rounded-[10px]"
+        style={{
+          backgroundImage: `radial-gradient(circle at 50% 0%, ${color} 36%, #1f2937 36%)`,
+        }}
+      >
+        <CardContent />
+      </div>
+    </>
   );
 };
-
-export { ItemCard };

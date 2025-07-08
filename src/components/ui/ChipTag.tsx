@@ -16,7 +16,7 @@ const ChipTag: React.FC<ChipTagProps> = ({
       style={{
         backgroundColor: bgColor,
       }}
-      className={`px-3 w-[80px] rounded-full m-4`}
+      className="px-3 w-[80px] rounded-full m-4"
     >
       <p className={`text-center ${color}`}>{text}</p>
     </div>

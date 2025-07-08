@@ -1,4 +1,6 @@
 import React from "react";
+/* Next JS Features */
+import Link from "next/link";
 /* Components */
 import { ItemImage } from "@/components/ui/ItemImage";
 import { RhomboidTag } from "@/components/ui/RhomboidTag";
@@ -25,9 +27,11 @@ const CarouselCard: React.FC<CarouselCardProps> = ({ pokemon }) => {
             <RhomboidTag bgColor="bg-red-500" text={`#${pokemon.id}`} />
           </div>
           <p className="text-justify">{pokemon.description}</p>
-          <Button className="bg-red-500 rounded-sm uppercase text-white hover:bg-red-500 focus:bg-red-500">
-            Show More
-          </Button>
+          <Link href={`/pokemon/${pokemon.id}`}>
+            <Button className="bg-red-500 rounded-sm uppercase text-white focus:bg-red-500 hover:bg-red-600 transition-all">
+              Show More
+            </Button>
+          </Link>
         </div>
       </div>
       <p className="text-2xl text-center font-semibold my-3.5">

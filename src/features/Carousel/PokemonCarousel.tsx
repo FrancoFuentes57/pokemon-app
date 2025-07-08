@@ -8,10 +8,10 @@ import {
 } from "@/components/ui/Carousel";
 import { CarouselCard } from "./CarouselCard";
 /* Types */
-import { Pokemon } from "@/types/types";
+import { Item } from "@/types/types";
 
 interface PokemonCarouselProps {
-  carouselPokemons: Pokemon[];
+  carouselPokemons: Item[];
 }
 
 const PokemonCarousel: React.FC<PokemonCarouselProps> = ({

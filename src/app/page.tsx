@@ -13,21 +13,15 @@ export default async function Home() {
 
   const { carouselPokemons, characterPokemons, games } = await res.json();
 
-  console.log(carouselPokemons);
-  console.log(characterPokemons);
-  console.log(games);
-
   return (
-    <div>
-      <main>
-        <PokemonCarousel carouselPokemons={carouselPokemons} />
-        <HomeSection
-          sectionTitle="Characters Essentials"
-          items={characterPokemons}
-          type={"Pokemon"}
-        />
-        <HomeSection sectionTitle="Videogames" items={games} type="Videogame" />
-      </main>
-    </div>
+    <>
+      <PokemonCarousel carouselPokemons={carouselPokemons} />
+      <HomeSection
+        sectionTitle="Characters Essentials"
+        items={characterPokemons}
+        type={"Pokemon"}
+      />
+      <HomeSection sectionTitle="Videogames" items={games} type="Videogame" />
+    </>
   );
 }

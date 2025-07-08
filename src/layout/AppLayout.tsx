@@ -10,7 +10,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   return (
     <div className="w-full mb-8">
       <Header />
-      <div className="w-[95%] mx-auto">{children}</div>
+      <main className="w-[95%] mx-auto">{children}</main>
     </div>
   );
 };
