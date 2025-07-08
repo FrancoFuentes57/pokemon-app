@@ -12,6 +12,7 @@ import { ThemeToggle } from "@/features/DarkAndLightMode/ThemeToggle";
 
 interface NavListProps {
   isUpperMobile: boolean;
+  handleCloseDrawer?: () => void;
 }
 
 const navItems = [
@@ -36,7 +37,10 @@ const linkBaseClass = "flex items-center px-4";
 const mobileClass =
   "gap-3 py-2 rounded hover:bg-accent hover:text-accent-foreground";
 
-const NavList: React.FC<NavListProps> = ({ isUpperMobile }) => {
+const NavList: React.FC<NavListProps> = ({
+  isUpperMobile,
+  handleCloseDrawer,
+}) => {
   return (
     <nav
       className={`flex ${
@@ -47,6 +51,9 @@ const NavList: React.FC<NavListProps> = ({ isUpperMobile }) => {
         <Link
           key={label}
           href={href}
+          onClick={() => {
+            if (!isUpperMobile && handleCloseDrawer) handleCloseDrawer();
+          }}
           className={`${linkBaseClass} ${
             !isUpperMobile ? mobileClass : "uppercase font-bold"
           }`}
