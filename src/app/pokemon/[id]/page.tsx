@@ -5,12 +5,12 @@ import pokeApi from "@/lib/axios";
 import { Button } from "@/components/ui/Button";
 import { getCapitalizeName } from "@/lib/utils";
 
-export const dynamic = "force-dynamic";
+type Params = Promise<{ id: string }>;
 
 export default async function PokemonDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Params;
 }) {
   const { id } = await params;
 
