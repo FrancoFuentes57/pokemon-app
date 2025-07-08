@@ -2,6 +2,7 @@
 import React from "react";
 /* Next JS Features */
 import Image from "next/image";
+import Link from "next/link";
 /* Hooks */
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 /* Components */
@@ -12,14 +13,16 @@ const Header = () => {
   const isUpperMobile = useMediaQuery("(min-width:768px)");
 
   return (
-    <header className="z-10 bg-blue-300 flex items-center justify-between mx-auto mb-6 px-4 py-2 sticky top-0 md:my-6 md:px-10 md:py-4 md:w-[95%] md:rounded-md">
-      <Image
-        src="/PokemonLogo.png"
-        alt="Pokemon Logo"
-        width={150}
-        height={80}
-        priority
-      />
+    <header className="z-20 bg-blue-300 flex items-center justify-between mx-auto mb-6 px-4 py-2 sticky top-0 md:my-6 md:px-10 md:py-4 md:w-[95%] md:rounded-md">
+      <Link href={"/"}>
+        <Image
+          src="/PokemonLogo.png"
+          alt="Pokemon Logo"
+          width={150}
+          height={80}
+          priority
+        />
+      </Link>
       {isUpperMobile ? (
         <NavList isUpperMobile={isUpperMobile} />
       ) : (

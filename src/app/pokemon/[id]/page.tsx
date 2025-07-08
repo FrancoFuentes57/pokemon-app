@@ -1,30 +1,31 @@
+// src/app/pokemon/[id]/page.tsx
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* Next JS Features */
 import Image from "next/image";
 import Link from "next/link";
-/* Axios */
 import pokeApi from "@/lib/axios";
-/* Components */
 import { Button } from "@/components/ui/Button";
-/* Utils */
 import { getCapitalizeName } from "@/lib/utils";
 
 interface PokemonDetailPageProps {
   params: { id: string };
 }
 
+export const dynamic = "force-dynamic";
+
 export default async function PokemonDetailPage({
   params,
 }: PokemonDetailPageProps) {
+  const id = params.id;
+
   try {
-    const res = await pokeApi.get(`pokemon/${params.id}`);
+    const res = await pokeApi.get(`pokemon/${id}`);
     const pokemon = res.data;
 
     return (
       <section>
         <Link href="/pokemon">
           <Button className="bg-red-500 rounded-sm uppercase text-white focus:bg-red-500 hover:bg-red-600 transition-all">
-            ← Back to Pokémon{" "}
+            ← Back to Pokémon
           </Button>
         </Link>
 
@@ -51,10 +52,10 @@ export default async function PokemonDetailPage({
             <p>
               <strong>Weight:</strong> {pokemon.weight || "-"}
             </p>
-            {pokemon.pypes && (
+            {pokemon.types && (
               <p>
                 <strong>Types:</strong>{" "}
-                {pokemon.pypes
+                {pokemon.types
                   .map((t: any) => getCapitalizeName(t.type.name))
                   .join(", ")}
               </p>

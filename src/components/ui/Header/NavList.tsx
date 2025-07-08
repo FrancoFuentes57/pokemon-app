@@ -1,5 +1,5 @@
 import React from "react";
-/* Next.js */
+/* NextJS Features */
 import Link from "next/link";
 /* Icons */
 import { CgPokemon } from "react-icons/cg";
@@ -22,7 +22,7 @@ const navItems = [
   },
   {
     label: "Videogames",
-    href: "/favorites", // consider updating if this should differ
+    href: "/videogames",
     icon: <MdOutlineVideogameAsset size={24} />,
   },
   {

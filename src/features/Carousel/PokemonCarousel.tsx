@@ -18,7 +18,7 @@ const PokemonCarousel: React.FC<PokemonCarouselProps> = ({
   carouselPokemons = [],
 }) => {
   const plugin = React.useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: true })
+    Autoplay({ delay: 3800, stopOnInteraction: false })
   );
 
   if (carouselPokemons.length === 0)

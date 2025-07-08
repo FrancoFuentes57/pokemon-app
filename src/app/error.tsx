@@ -1,4 +1,3 @@
-// app/error.tsx
 "use client";
 
 interface ErrorProps {

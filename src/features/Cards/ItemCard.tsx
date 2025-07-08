@@ -1,6 +1,7 @@
 /* Components */
 import { ChipTag } from "@/components/ui/ChipTag";
 import { ItemImage } from "@/components/ui/ItemImage";
+import { ButtonsTape } from "./ButtonsTape";
 /* Types */
 import { Item } from "@/types/types";
 /* Constants */
@@ -18,13 +19,14 @@ export const ItemCard: React.FC<ItemCardProps> = ({ item, type }) => {
     : "#fdba74";
 
   const CardContent = () => (
-    <>
+    <div className="relative">
+      {type === "Pokemon" && <ButtonsTape item={item} />}
       <ItemImage
         customSx="w-[210px] h-[210px] sm:w-[230px] sm:h-[230px] mx-auto"
         src={type === "Pokemon" ? item.image : "/VideoGame.png"}
       />
       <p className="text-center text-2xl font-semibold mb-3">
-        {getCapitalizeName(item.name)}
+        {`#${item.id} ${getCapitalizeName(item.name)}`}
       </p>
 
       {item.generation && (
@@ -65,14 +67,14 @@ export const ItemCard: React.FC<ItemCardProps> = ({ item, type }) => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 
   return (
     <>
       {/* Light mode */}
       <div
-        className="dark:hidden w-full max-w-[300px] flex flex-col shadow-md px-6 py-4 rounded-[10px]"
+        className="relative dark:hidden w-full max-w-[300px] flex flex-col shadow-md px-6 py-4 rounded-[10px]"
         style={{
           backgroundImage: `radial-gradient(circle at 50% 0%, ${color} 36%, #ffffff 36%)`,
         }}
@@ -82,7 +84,7 @@ export const ItemCard: React.FC<ItemCardProps> = ({ item, type }) => {
 
       {/* Dark mode */}
       <div
-        className="hidden dark:flex w-full max-w-[300px] flex-col shadow-md px-6 py-4 rounded-[10px]"
+        className=" relative hidden dark:flex w-full max-w-[300px] flex-col shadow-md px-6 py-4 rounded-[10px]"
         style={{
           backgroundImage: `radial-gradient(circle at 50% 0%, ${color} 36%, #1f2937 36%)`,
         }}

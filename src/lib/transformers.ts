@@ -4,7 +4,7 @@ export function transformPokemon(pokemon: any) {
     id: pokemon.id,
     name: pokemon.name,
     image: pokemon.sprites.other["official-artwork"].front_default,
-    description: pokemon.description || "", // ✅ Include the new description
+    description: pokemon.description || "",
     types: pokemon.types.map((t: any) => t.type.name),
     stats: {
       attack: pokemon.stats.find((s: any) => s.stat.name === "attack")
